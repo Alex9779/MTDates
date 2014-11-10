@@ -111,7 +111,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
     }
 
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
+    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
     NSArray *formatsToTry = @[ @"yyyy-MM-dd'T'HH:mm.ss.SSS'Z'", @"yyyy-MM-dd HH:mm:ss ZZZ", @"yyyy-MM-dd HH:mm:ss Z", @"yyyy-MM-dd HH:mm:ss", @"yyyy-MM-dd'T'HH:mm:ss'Z'", @"yyyy-MM-dd" ];
@@ -1393,7 +1393,7 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
 {
 	[[NSDate sharedRecursiveLock] lock];
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]];
+    [formatter setCalendar:[[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian]];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
     [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSString* result = [formatter stringFromDate:self];
@@ -1654,17 +1654,17 @@ static NSDateFormatterStyle         __timeStyle             = NSDateFormatterSho
         if (__timeZone) __components.timeZone = __timeZone;
     }
 
-    [__components setEra:NSUndefinedDateComponent];
-    [__components setYear:NSUndefinedDateComponent];
-    [__components setMonth:NSUndefinedDateComponent];
-    [__components setDay:NSUndefinedDateComponent];
-    [__components setHour:NSUndefinedDateComponent];
-    [__components setMinute:NSUndefinedDateComponent];
-    [__components setSecond:NSUndefinedDateComponent];
-    [__components setWeekOfYear:NSUndefinedDateComponent];
-    [__components setWeekday:NSUndefinedDateComponent];
-    [__components setWeekdayOrdinal:NSUndefinedDateComponent];
-    [__components setQuarter:NSUndefinedDateComponent];
+    [__components setEra:NSDateComponentUndefined];
+    [__components setYear:NSDateComponentUndefined];
+    [__components setMonth:NSDateComponentUndefined];
+    [__components setDay:NSDateComponentUndefined];
+    [__components setHour:NSDateComponentUndefined];
+    [__components setMinute:NSDateComponentUndefined];
+    [__components setSecond:NSDateComponentUndefined];
+    [__components setWeekOfYear:NSDateComponentUndefined];
+    [__components setWeekday:NSDateComponentUndefined];
+    [__components setWeekdayOrdinal:NSDateComponentUndefined];
+    [__components setQuarter:NSDateComponentUndefined];
 
     return __components;
 }
